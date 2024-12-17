@@ -32,7 +32,12 @@ char *ChargerChaine(int N) {
     char *chaine = (char *)malloc((N + 1) * sizeof(char));
     
     printf("Veuillez saisir une chaine max %d caracteres:\n", N);
-    fgets(chaine, N + 1, stdin); 
+    if (fgets(chaine, N+1, stdin)) {
+        printf("La chaene entree est: %s\n", chaine);
+    } else {
+        printf("Erreur de lecture!\n");
+        exit(1);
+    }
     size_t len = strlen(chaine);
     if (chaine[len - 1] == '\n') {
         chaine[len - 1] = '\0';
